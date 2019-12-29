@@ -51,5 +51,5 @@ func (v *Vending) ItemPurchase(slot string) error {
 
 // ItemStock ...
 func (v *Vending) ItemStock(i *Item) {
-	v.Items[i.Slot] = append(v.Items[i.Name], i)
+	v.Items[i.Slot] = append(v.Items[i.Slot], i)
 }
