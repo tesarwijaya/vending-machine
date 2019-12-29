@@ -2,7 +2,6 @@ package vending
 
 import (
 	"errors"
-	"fmt"
 )
 
 // IsItemPurchaseable ...
@@ -36,10 +35,11 @@ func (v *Vending) ItemPurchase(slot string) error {
 		return errors.New("Invalid slot")
 	}
 	item := items[0]
-	fmt.Println("itemsssss: ", item)
-	if canPurchase, _ := v.IsItemPurchaseable(item.Slot); canPurchase == true {
+
+	if canPurchase, _ := v.IsItemPurchaseable(item.Slot); canPurchase {
 		v.Balance = v.Balance - item.Price
 
+		v.Items[slot] = v.Items[slot][1:]
 		v.Outlet = append(v.Outlet, item)
 
 		return nil
